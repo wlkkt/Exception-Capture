@@ -59,3 +59,61 @@
 //
 //	return 0;
 //}
+
+
+#include<iostream>
+using namespace std;
+double Division(int a, int b)
+{
+	// 当b == 0时抛出异常
+	if (b == 0)
+		throw "Division by zero condition!";
+	else
+		return ((double)a / (double)b);
+}
+
+
+void fxx()
+{
+	int i = 0;
+	cin >> i;
+	if (i % 2 == 0)
+	{
+		string s("出现偶数");
+		throw s;
+		//throw 10;
+	}
+
+	cout << "会不会执行我呢？" << endl;
+}
+
+void Func()
+{
+	int len, time;
+	cin >> len >> time;
+	cout << Division(len, time) << endl;
+	fxx();
+}
+
+int main()
+{
+	try
+	{
+		Func();
+	}
+	catch (const char* errmsg)
+	{
+		cout << errmsg << endl;
+	}
+	catch (const string& err)
+	{
+		cout << err << endl;
+	}
+	catch (...) // 任意类型的异常
+	{
+		cout << "未知异常" << endl;
+	}
+	
+	cout << "到这里了" << endl;
+	return 0;
+}
